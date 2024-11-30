@@ -16,21 +16,37 @@
       padding: 20px;
       border: 1px solid #ccc;
       margin: 20px auto;
-      max-width: 300px;
+      max-width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      font-size: 24px;
+      color: #333;
     }
     input {
       margin: 10px 0;
-      padding: 8px;
+      padding: 10px;
       width: 90%;
       border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     }
     button {
       margin: 10px 0;
-      padding: 10px 20px;
+      padding: 12px 20px;
       background-color: #007BFF;
       color: white;
       border: none;
+      border-radius: 4px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #0056b3;
@@ -38,13 +54,18 @@
     .error {
       color: red;
       font-size: 14px;
+      margin: 10px 0;
+      display: none;
     }
     #output {
       margin: 10px 0;
       padding: 10px;
       background-color: #f8f8f8;
       border: 1px solid #ccc;
+      border-radius: 4px;
       min-height: 50px;
+      text-align: left;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -52,9 +73,9 @@
   <div id="loginPage" class="container">
     <h2>Login</h2>
     <form id="loginForm">
-      <input type="text" id="username" placeholder="Username">
-      <input type="password" id="password" placeholder="Password">
-      <p id="errorMessage" class="error" style="display: none;">Invalid username or password</p>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <p id="errorMessage" class="error">Invalid username or password</p>
       <button type="submit">Login</button>
     </form>
   </div>
@@ -62,7 +83,7 @@
   <div id="dashboardPage" class="container" style="display: none;">
     <h2>Dashboard</h2>
     <form id="stringForm">
-      <input type="text" id="inputString" placeholder="Type something...">
+      <input type="text" id="inputString" placeholder="Type something..." required>
       <button type="submit">Submit</button>
     </form>
     <div id="output"></div>
