@@ -7,46 +7,57 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
+      background-color: #f7f7f7;
       text-align: center;
       margin: 0;
-      padding: 20px;
+      padding: 30px;
     }
     .container {
       background-color: #fff;
-      padding: 15px;
-      margin: 20px auto;
-      width: 250px;
-      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 30px auto;
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     input {
-      padding: 8px;
+      padding: 10px;
       width: 100%;
-      margin: 10px 0;
-      border: 1px solid #ccc;
+      margin: 12px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
     }
     button {
-      padding: 10px;
+      padding: 12px;
       background-color: #4CAF50;
       color: white;
       width: 100%;
       border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
     }
     button:hover {
       background-color: #45a049;
     }
     .error {
       color: red;
-      font-size: 12px;
+      font-size: 14px;
+      display: none;
     }
     #output {
       margin-top: 20px;
-      padding: 10px;
-      background-color: #eee;
-      border: 1px solid #ccc;
+      padding: 12px;
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      min-height: 60px;
     }
     h2 {
-      font-size: 20px;
+      font-size: 24px;
+      color: #333;
     }
   </style>
 </head>
@@ -55,9 +66,9 @@
   <div id="loginPage" class="container">
     <h2>Login</h2>
     <form id="loginForm">
-      <input type="text" id="username" placeholder="Username">
-      <input type="password" id="password" placeholder="Password">
-      <p id="errorMessage" class="error" style="display: none;">Invalid username or password</p>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <p id="errorMessage" class="error">Invalid username or password</p>
       <button type="submit">Login</button>
     </form>
   </div>
@@ -65,7 +76,7 @@
   <div id="dashboardPage" class="container" style="display: none;">
     <h2>Dashboard</h2>
     <form id="stringForm">
-      <input type="text" id="inputString" placeholder="Type something...">
+      <input type="text" id="inputString" placeholder="Type something..." required>
       <button type="submit">Submit</button>
     </form>
     <div id="output"></div>
