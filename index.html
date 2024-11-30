@@ -7,62 +7,69 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
+      background-color: #eaeaea;
       text-align: center;
-      margin: 0;
-      padding: 30px;
+      padding: 20px;
     }
     .container {
-      background-color: #fff;
+      background-color: white;
       padding: 20px;
-      margin: 30px auto;
-      width: 300px;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      max-width: 350px;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    input {
-      padding: 10px;
-      width: 100%;
-      margin: 12px 0;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-    button {
-      padding: 12px;
-      background-color: #4CAF50;
-      color: white;
-      width: 100%;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    .error {
-      color: red;
-      font-size: 14px;
-      display: none;
-    }
-    #output {
-      margin-top: 20px;
-      padding: 12px;
-      background-color: #f4f4f4;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      min-height: 60px;
     }
     h2 {
       font-size: 24px;
       color: #333;
     }
+    input {
+      margin: 10px 0;
+      padding: 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    button {
+      margin: 10px 0;
+      padding: 12px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin: 10px 0;
+      display: none;
+    }
+    #output {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #f8f8f8;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      min-height: 50px;
+      text-align: left;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
-
   <div id="loginPage" class="container">
     <h2>Login</h2>
     <form id="loginForm">
