@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessions QUIZ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eaeaea;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      max-width: 300px;
+    }
+    input {
+      margin: 10px 0;
+      padding: 8px;
+      width: 90%;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    #output {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #f8f8f8;
+      border: 1px solid #ccc;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginPage" class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <p id="errorMessage" class="error" style="display: none;">Invalid username or password</p>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <div id="dashboardPage" class="container" style="display: none;">
+    <h2>Dashboard</h2>
+    <form id="stringForm">
+      <input type="text" id="inputString" placeholder="Type something...">
+      <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+    <button id="logoutButton">Logout</button>
+  </div>
+
+  <script>
+    const USERNAME = "admin";
+    const PASSWORD = "admin123";
+
+    const loginPage = document.getElementById("loginPage");
+    const dashboardPage = document.getElementById("dashboardPage");
+    const loginForm = document.getElementById("loginForm");
+    const stringForm = document.getElementById("stringForm");
+    const inputString = document.getElementById("inputString");
+    const output = document.getElementById("output");
+    const logoutButton = document.getElementById("logoutButton");
+    const errorMessage = document.getElementById("errorMessage");
+
+    if (sessionStorage.getItem("loggedIn") === "true") {
+      showDashboard();
+      displaySavedText();
+    }
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === USERNAME && password === PASSWORD) {
+        sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("submittedText", sessionStorage.getItem("submittedText") || "");
+        showDashboard();
+      } else {
+        errorMessage.style.display = "block";
+      }
+    });
+
+    stringForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const text = inputString.value;
+
+      if (text) {
+        const existingText = sessionStorage.getItem("submittedText") || "";
+        sessionStorage.setItem("submittedText", existingText + text + "<br>");
+        displaySavedText();
+        inputString.value = "";
+      }
+    });
+
+    logoutButton.addEventListener("click", function () {
+      sessionStorage.removeItem("loggedIn");
+      sessionStorage.removeItem("submittedText");
+      showLogin();
+    });
+
+    function showDashboard() {
+      loginPage.style.display = "none";
+      dashboardPage.style.display = "block";
+    }
+
+    function showLogin() {
+      loginPage.style.display = "block";
+      dashboardPage.style.display = "none";
+    }
+
+    function displaySavedText() {
+      output.innerHTML = sessionStorage.getItem("submittedText") || "";
+    }
+  </script>
+</body>
+</html>
